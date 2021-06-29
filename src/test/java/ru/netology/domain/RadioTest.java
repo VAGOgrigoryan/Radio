@@ -23,6 +23,7 @@ public class RadioTest {
         rad.decreaseStation();
         assertEquals(7, rad.getCurrentStation());
     }
+
     @Test
     public void pressForwardToSwitchToTheNextStation() {
         Radio rad = new Radio();
@@ -31,6 +32,7 @@ public class RadioTest {
         rad.increaseStation();
         assertEquals(0, rad.getCurrentStation());
     }
+
     @Test
     public void pressBackToSwitchToThePreviousStation() {
         Radio rad = new Radio();
@@ -39,6 +41,7 @@ public class RadioTest {
         rad.decreaseStation();
         assertEquals(9, rad.getCurrentStation());
     }
+
     @Test
     public void afterClickingNextOnTheLastStation() {
         Radio rad = new Radio();
@@ -47,6 +50,7 @@ public class RadioTest {
         rad.increaseStation();
         assertEquals(0, rad.getCurrentStation());
     }
+
     @Test
     public void afterPushingBackWhileAtMinimumStation() {
         Radio rad = new Radio();
@@ -55,6 +59,7 @@ public class RadioTest {
         rad.decreaseStation();
         assertEquals(9, rad.getCurrentStation());
     }
+
     @Test
     public void shouldIncreaseTheVolumeOneNotch() {
         Radio rad = new Radio();
@@ -63,6 +68,7 @@ public class RadioTest {
         rad.increaseVolume();
         assertEquals(5, rad.getCurrentVolume());
     }
+
     @Test
     public void shouldDecreaseTheVolumeByOneDivision() {
         Radio rad = new Radio();
@@ -71,6 +77,7 @@ public class RadioTest {
         rad.decreaseVolume();
         assertEquals(3, rad.getCurrentVolume());
     }
+
     @Test
     public void atMaxVolumeFurtherIncreaseDoesNotLeadToAnything() {
         Radio rad = new Radio();
@@ -79,6 +86,7 @@ public class RadioTest {
         rad.increaseVolume();
         assertEquals(10, rad.getCurrentVolume());
     }
+
     @Test
     public void atMinVolumeFurtherReductionDoesNotLeadToAnything() {
         Radio rad = new Radio();
