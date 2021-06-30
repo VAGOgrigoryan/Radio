@@ -39,14 +39,14 @@ public class RadioTest {
 
         rad.setCurrentStation(-1);
         rad.decreaseStation();
-        assertEquals(9, rad.getCurrentStation());
+        assertEquals(10, rad.getCurrentStation());
     }
 
     @Test
     public void afterClickingNextOnTheLastStation() {
         Radio rad = new Radio();
 
-        rad.setCurrentStation(9);
+        rad.setCurrentStation(10);
         rad.increaseStation();
         assertEquals(0, rad.getCurrentStation());
     }
@@ -57,7 +57,7 @@ public class RadioTest {
 
         rad.setCurrentStation(0);
         rad.decreaseStation();
-        assertEquals(9, rad.getCurrentStation());
+        assertEquals(10, rad.getCurrentStation());
     }
 
     @Test
@@ -82,9 +82,9 @@ public class RadioTest {
     public void atMaxVolumeFurtherIncreaseDoesNotLeadToAnything() {
         Radio rad = new Radio();
 
-        rad.setCurrentVolume(10);
+        rad.setCurrentVolume(100);
         rad.increaseVolume();
-        assertEquals(10, rad.getCurrentVolume());
+        assertEquals(100, rad.getCurrentVolume());
     }
 
     @Test
@@ -94,6 +94,14 @@ public class RadioTest {
         rad.setCurrentVolume(0);
         rad.decreaseVolume();
         assertEquals(0, rad.getCurrentVolume());
+    }
+
+    @Test
+    public void mustPutAnyStationOfUserChoice() {
+        Radio rad = new Radio();
+
+        rad.setCurrentStation(6);
+        assertEquals(6, rad.getCurrentStation());
     }
 
 }
