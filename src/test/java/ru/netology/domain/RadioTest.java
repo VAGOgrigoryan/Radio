@@ -39,7 +39,7 @@ public class RadioTest {
 
         rad.setCurrentStation(-1);
         rad.decreaseStation();
-        assertEquals(10, rad.getCurrentStation());
+        assertEquals(9, rad.getCurrentStation());
     }
 
     @Test
@@ -57,7 +57,7 @@ public class RadioTest {
 
         rad.setCurrentStation(0);
         rad.decreaseStation();
-        assertEquals(10, rad.getCurrentStation());
+        assertEquals(9, rad.getCurrentStation());
     }
 
     @Test
@@ -102,6 +102,14 @@ public class RadioTest {
 
         rad.setCurrentStation(6);
         assertEquals(6, rad.getCurrentStation());
+    }
+
+    @Test
+    public void theUserExposesTheNumberOfStations() {
+        Radio rad = new Radio();
+
+        rad.setNumberOfStation(8);
+        assertEquals(8, rad.getNumberOfStation());
     }
 
 }
