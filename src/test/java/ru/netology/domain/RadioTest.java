@@ -104,12 +104,23 @@ public class RadioTest {
         assertEquals(6, rad.getCurrentStation());
     }
 
+
     @Test
-    public void theUserExposesTheNumberOfStations() {
+    public void creationOfARadioWithMoreStationsThanTheMaximum() {
         Radio rad = new Radio();
 
-        rad.setNumberOfStation(8);
-        assertEquals(8, rad.getNumberOfStation());
+        rad.setCurrentStation(15);
+        rad.nextStation();
+        assertEquals(0, rad.getCurrentStation());
+    }
+
+    @Test
+    public void switchStationBackWhenItIsMinimum() {
+        Radio rad = new Radio();
+
+        rad.setCurrentStation(0);
+        rad.prevStation();
+        assertEquals(10, rad.getCurrentStation());
     }
 
 }

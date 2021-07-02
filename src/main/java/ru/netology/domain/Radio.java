@@ -2,27 +2,18 @@ package ru.netology.domain;
 
 public class Radio {
     private int currentStation;
-    private int maxStation = 9;
+    private int maxStation = 10;
     private int minStation = 0;
     private int currentVolume;
     private int maxVolume = 100;
     private int minVolume = 0;
-    private int numberOfStation;
 
     public Radio() {
 
     }
-    public Radio (int numberOfStation){
-        this.numberOfStation = numberOfStation;
+    public Radio (int maxStation){
+        this.maxStation = maxStation;
 
-    }
-
-    public int getNumberOfStation(){
-        return numberOfStation;
-    }
-
-    public void setNumberOfStation(int newNumberOfStation){
-        this.numberOfStation = newNumberOfStation;
     }
 
     public Radio(int maxStation, int minStation, int currentStation, int maxVolume, int minVolume, int currentVolume) {
@@ -56,7 +47,7 @@ public class Radio {
     }
 
     public int getCurrentStation() {
-        return currentStation;
+        return this.currentStation;
     }
 
     public void setCurrentStation(int newCurrentStation) {
@@ -65,17 +56,18 @@ public class Radio {
 
     public void increaseStation() {
         if (currentStation >= maxStation) {
-            currentStation = minStation;
+            this.currentStation = minStation;
         } else {
             this.currentStation = currentStation + 1;
         }
+
     }
 
     public void decreaseStation() {
         if (currentStation <= minStation) {
-            currentStation = maxStation;
+            this.currentStation = maxStation;
         } else {
-            currentStation = currentStation - 1;
+            this.currentStation = currentStation - 1;
         }
     }
 
@@ -114,4 +106,22 @@ public class Radio {
             currentVolume = currentVolume - 1;
         }
     }
+    public int nextStation() {
+        if (currentStation >= maxStation) {
+            this.currentStation = minStation;
+        } else {
+            this.currentStation = currentStation + 1;
+        }
+        return currentStation + 1;
+    }
+    public int prevStation() {
+        if (currentStation <= minStation) {
+            this.currentStation = maxStation;
+        } else {
+            this.currentStation = currentStation - 1;
+        }
+        return  currentStation - 1;
+    }
+
+
 }
