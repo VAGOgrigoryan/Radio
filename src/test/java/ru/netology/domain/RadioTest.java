@@ -123,4 +123,33 @@ public class RadioTest {
         assertEquals(10, rad.getCurrentStation());
     }
 
+    /// тесты на выставление радиостанции с пульта
+
+    @Test
+    public void settingTheRadioStationFromTheRemoteControl() {
+        Radio rad = new Radio();
+
+        rad.setCurrentStation(5);
+        rad.remoteController(20);
+        assertEquals(10, rad.getCurrentStation());
+    }
+
+    @Test
+    public void settingTheRadioStationFromTheRemoteControl2() {
+        Radio rad = new Radio();
+
+        rad.setCurrentStation(5);
+        rad.remoteController(2);
+        assertEquals(2, rad.getCurrentStation());
+    }
+
+    @Test
+    public void settingTheRadioStationFromTheRemoteControl3() {
+        Radio rad = new Radio();
+
+        rad.setCurrentStation(5);
+        rad.remoteController(-1);
+        assertEquals(0, rad.getCurrentStation());
+    }
+
 }

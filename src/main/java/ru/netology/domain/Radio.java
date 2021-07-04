@@ -123,5 +123,15 @@ public class Radio {
         return  currentStation - 1;
     }
 
+    public void remoteController(int radioStation) {
+        if (radioStation > maxStation) {
+            radioStation = maxStation;
+        }
+        if (radioStation < minStation) {
+            radioStation = minStation;
+        }
+        this.currentStation = radioStation;
+    }
+
 
 }
