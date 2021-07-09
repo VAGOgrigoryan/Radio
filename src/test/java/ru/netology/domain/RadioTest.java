@@ -120,7 +120,7 @@ public class RadioTest {
 
         rad.setCurrentStation(0);
         rad.prevStation();
-        assertEquals(10, rad.getCurrentStation());
+        assertEquals(9, rad.getCurrentStation());
     }
 
     /// тесты на выставление радиостанции с пульта
@@ -131,7 +131,7 @@ public class RadioTest {
 
         rad.setCurrentStation(5);
         rad.remoteController(20);
-        assertEquals(10, rad.getCurrentStation());
+        assertEquals(9, rad.getCurrentStation());
     }
 
     @Test
@@ -151,5 +151,12 @@ public class RadioTest {
         rad.remoteController(-1);
         assertEquals(0, rad.getCurrentStation());
     }
+//// задаем количество радиостанций и выставляем номер станции
+    @Test
+    public void displayingTheStationNumberFromTheRemoteControl() {
+        Radio rad = new Radio(20);
 
+        rad.setCurrentStation(15);
+        assertEquals(15, rad.getCurrentStation());
+    }
 }
