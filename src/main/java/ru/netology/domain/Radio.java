@@ -4,16 +4,39 @@ public class Radio {
     private int currentStation;
     private int maxStation = 9;
     private int minStation = 0;
+    private int numberOfStations = 10;
     private int currentVolume;
-    private int maxVolume = 10;
+    private int maxVolume = 100;
     private int minVolume = 0;
+
+    public Radio() {
+    }
+
+    public Radio (int numberOfStations){
+        this.numberOfStations = numberOfStations;
+        this.maxStation = numberOfStations -1;
+    }
+
+    public Radio(int maxStation, int minStation, int currentStation, int maxVolume, int minVolume, int currentVolume) {
+        this.currentStation = currentStation;
+        this.maxStation = maxStation;
+        this.minStation = minStation;
+        this.currentVolume = currentVolume;
+        this.maxVolume = maxVolume;
+        this.minVolume = minVolume;
+    }
+
+    public Radio (int currentStation, int currentVolume){
+        this.currentStation = currentStation;
+        this.currentVolume = currentVolume;
+    }
 
     public int getMaxStation() {
         return maxStation;
     }
 
     public void setMaxStation(int newMaxStation) {
-        this.maxStation = newMaxStation;
+        this.maxStation = newMaxStation + 1;
     }
 
     public int getMinStation() {
@@ -21,11 +44,11 @@ public class Radio {
     }
 
     public void setMinStation(int newMinStation) {
-        this.minStation = newMinStation;
+        this.minStation = newMinStation - 1;
     }
 
     public int getCurrentStation() {
-        return currentStation;
+        return this.currentStation;
     }
 
     public void setCurrentStation(int newCurrentStation) {
@@ -33,18 +56,18 @@ public class Radio {
     }
 
     public void increaseStation() {
-        if (currentStation >= maxStation){
-            currentStation = minStation;
+        if (currentStation >= maxStation) {
+            this.currentStation = minStation;
         } else {
-           this.currentStation = currentStation + 1;
+            this.currentStation = currentStation + 1;
         }
     }
 
     public void decreaseStation() {
         if (currentStation <= minStation) {
-            currentStation = maxStation;
+            this.currentStation = maxStation;
         } else {
-            currentStation = currentStation - 1;
+            this.currentStation = currentStation - 1;
         }
     }
 
@@ -72,14 +95,43 @@ public class Radio {
         this.currentVolume = newCurrentVolume;
     }
 
-    public void increaseVolume(){
-        if(currentVolume < maxVolume){
-            currentVolume = currentVolume +1;
+    public void increaseVolume() {
+        if (currentVolume < maxVolume) {
+            currentVolume = currentVolume + 1;
         }
     }
-    public void decreaseVolume(){
-        if(currentVolume > minVolume){
-            currentVolume = currentVolume -1;
+
+    public void decreaseVolume() {
+        if (currentVolume > minVolume) {
+            currentVolume = currentVolume - 1;
         }
+    }
+
+    public int nextStation() {
+        if (currentStation >= maxStation) {
+            this.currentStation = minStation;
+        } else {
+            this.currentStation = currentStation + 1;
+        }
+        return currentStation + 1;
+    }
+
+    public int prevStation() {
+        if (currentStation <= minStation) {
+            this.currentStation = maxStation;
+        } else {
+            this.currentStation = currentStation - 1;
+        }
+        return  currentStation - 1;
+    }
+
+    public void remoteController(int radioStation) {
+        if (radioStation > maxStation) {
+            radioStation = maxStation;
+        }
+        if (radioStation < minStation) {
+            radioStation = minStation;
+        }
+        this.currentStation = radioStation;
     }
 }

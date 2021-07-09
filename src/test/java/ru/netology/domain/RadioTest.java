@@ -23,6 +23,7 @@ public class RadioTest {
         rad.decreaseStation();
         assertEquals(7, rad.getCurrentStation());
     }
+
     @Test
     public void pressForwardToSwitchToTheNextStation() {
         Radio rad = new Radio();
@@ -31,6 +32,7 @@ public class RadioTest {
         rad.increaseStation();
         assertEquals(0, rad.getCurrentStation());
     }
+
     @Test
     public void pressBackToSwitchToThePreviousStation() {
         Radio rad = new Radio();
@@ -39,14 +41,16 @@ public class RadioTest {
         rad.decreaseStation();
         assertEquals(9, rad.getCurrentStation());
     }
+
     @Test
     public void afterClickingNextOnTheLastStation() {
         Radio rad = new Radio();
 
-        rad.setCurrentStation(9);
+        rad.setCurrentStation(10);
         rad.increaseStation();
         assertEquals(0, rad.getCurrentStation());
     }
+
     @Test
     public void afterPushingBackWhileAtMinimumStation() {
         Radio rad = new Radio();
@@ -55,6 +59,7 @@ public class RadioTest {
         rad.decreaseStation();
         assertEquals(9, rad.getCurrentStation());
     }
+
     @Test
     public void shouldIncreaseTheVolumeOneNotch() {
         Radio rad = new Radio();
@@ -63,6 +68,7 @@ public class RadioTest {
         rad.increaseVolume();
         assertEquals(5, rad.getCurrentVolume());
     }
+
     @Test
     public void shouldDecreaseTheVolumeByOneDivision() {
         Radio rad = new Radio();
@@ -71,14 +77,16 @@ public class RadioTest {
         rad.decreaseVolume();
         assertEquals(3, rad.getCurrentVolume());
     }
+
     @Test
     public void atMaxVolumeFurtherIncreaseDoesNotLeadToAnything() {
         Radio rad = new Radio();
 
-        rad.setCurrentVolume(10);
+        rad.setCurrentVolume(100);
         rad.increaseVolume();
-        assertEquals(10, rad.getCurrentVolume());
+        assertEquals(100, rad.getCurrentVolume());
     }
+
     @Test
     public void atMinVolumeFurtherReductionDoesNotLeadToAnything() {
         Radio rad = new Radio();
@@ -88,4 +96,67 @@ public class RadioTest {
         assertEquals(0, rad.getCurrentVolume());
     }
 
+    @Test
+    public void mustPutAnyStationOfUserChoice() {
+        Radio rad = new Radio();
+
+        rad.setCurrentStation(6);
+        assertEquals(6, rad.getCurrentStation());
+    }
+
+
+    @Test
+    public void creationOfARadioWithMoreStationsThanTheMaximum() {
+        Radio rad = new Radio();
+
+        rad.setCurrentStation(15);
+        rad.nextStation();
+        assertEquals(0, rad.getCurrentStation());
+    }
+
+    @Test
+    public void switchStationBackWhenItIsMinimum() {
+        Radio rad = new Radio();
+
+        rad.setCurrentStation(0);
+        rad.prevStation();
+        assertEquals(9, rad.getCurrentStation());
+    }
+
+    /// тесты на выставление радиостанции с пульта
+
+    @Test
+    public void settingTheRadioStationFromTheRemoteControl() {
+        Radio rad = new Radio();
+
+        rad.setCurrentStation(5);
+        rad.remoteController(20);
+        assertEquals(9, rad.getCurrentStation());
+    }
+
+    @Test
+    public void settingTheRadioStationFromTheRemoteControl2() {
+        Radio rad = new Radio();
+
+        rad.setCurrentStation(5);
+        rad.remoteController(2);
+        assertEquals(2, rad.getCurrentStation());
+    }
+
+    @Test
+    public void settingTheRadioStationFromTheRemoteControl3() {
+        Radio rad = new Radio();
+
+        rad.setCurrentStation(5);
+        rad.remoteController(-1);
+        assertEquals(0, rad.getCurrentStation());
+    }
+//// задаем количество радиостанций и выставляем номер станции
+    @Test
+    public void displayingTheStationNumberFromTheRemoteControl() {
+        Radio rad = new Radio(20);
+
+        rad.setCurrentStation(15);
+        assertEquals(15, rad.getCurrentStation());
+    }
 }
